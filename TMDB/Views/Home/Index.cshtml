@@ -1,0 +1,68 @@
+﻿@model TradeViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">The movie you were looking for...</h1>
+    @ViewBag.Accion
+    <form class="d-flex" method="get">
+        <input name="movieName" class="form-control me-sm-2" type="search" placeholder="Search" id="searchWord" />
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit" asp-controller="Home" asp-action="Index">
+            Buscar
+        </button>
+    </form>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Original Title</th>
+                <th>Vote Average</th>
+                <th>Release Date</th>
+                <th>Overview</th
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.movie.title</td>
+                <td>@Model.movie.original_title</td>
+                @if (Model.movie.vote_average == 0)
+                {
+                    <td></td>
+                } else
+                {
+                    <td>@Model.movie.vote_average</td>
+                }
+
+                <td>@Model.movie.release_date</td>
+                <td>@Model.movie.overview</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br />
+<br />
+<br />
+<br />
+<div class="text-center">
+    <h1 class="display-4">Similar movies by genre...</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Movie</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.relatedMovies)
+            {
+               <tr>
+                    <td>@(item.title + " (" + item.year + ")")</td>
+               </tr> 
+            }
+            
+        </tbody>
+    </table>
+
+</div>
