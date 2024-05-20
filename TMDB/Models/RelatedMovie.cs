@@ -1,6 +1,7 @@
 ﻿namespace TMDB.Models
 {
-    public class RelatedMovie{
+    public class RelatedMovie
+    {
 
         public int id { get; set; }
         public string? title { get; set; }

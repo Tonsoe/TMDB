@@ -21,10 +21,11 @@ namespace TMDB.Controllers
             List<RelatedMovie> relatedMovies = [];
             TradeViewModel model = new TradeViewModel();
             ViewBag.Accion = "Película";
-            
-            if (movieName != "") {
-                 movie = await _servicioApi.GetMovie(movieName);
-                 relatedMovies = await _servicioApi.GetRelatedMovies(movie.id);
+
+            if (movieName != "")
+            {
+                movie = await _servicioApi.GetMovie(movieName);
+                relatedMovies = await _servicioApi.GetRelatedMovies(movie.id);
             }
 
             movie = await _servicioApi.GetMovie(movieName);
